@@ -11,14 +11,12 @@ public class PlayerDeck extends CardHand {
 
 	@Override
 	Card removeCard() {
-		// TODO Auto-generated method stub
-		return null;
+		return cards.remove(0);
 	}
 
 	@Override
 	void addCard(Card c) {
-		// TODO Auto-generated method stub
-		
+		cards.add(c);
 	}
 
 }

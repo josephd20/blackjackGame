@@ -2,16 +2,16 @@ package game;
 
 import java.util.ArrayList;
 
-public class DealerDeck extends CardHand {
+public class Deck extends CardHand {
 
-	public DealerDeck()
+	public Deck()
 	{
 		cards = new ArrayList<Card>();
 		cards.addAll(CardUtil.createDeck());
 		CardUtil.shuffle(cards);
 	}
 	
-	public DealerDeck(int decks)
+	public Deck(int decks)
 	{
 		cards = new ArrayList<Card>();
 		for(int i = 0; i < decks; i++)
