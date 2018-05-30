@@ -6,14 +6,14 @@ public class DealerDeck extends CardHand {
 
 	public DealerDeck()
 	{
-		cards = new ArrayList<Card>();
+		ArrayList<Card> cards = new ArrayList<Card>();
 		cards.addAll(CardUtil.createDeck());
 		CardUtil.shuffle(cards);
 	}
 	
 	public DealerDeck(int decks)
 	{
-		cards = new ArrayList<Card>();
+		ArrayList<Card> cards = new ArrayList<Card>();
 		for(int i = 0; i < decks; i++)
 		{
 			cards.addAll(CardUtil.createDeck());

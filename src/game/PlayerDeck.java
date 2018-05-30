@@ -6,7 +6,7 @@ public class PlayerDeck extends CardHand {
 
 	public PlayerDeck()
 	{
-		cards = new ArrayList<Card>();
+		ArrayList<Card> cards = new ArrayList<Card>();
 	}
 
 	@Override
