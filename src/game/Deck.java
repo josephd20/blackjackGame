@@ -6,14 +6,14 @@ public class Deck extends CardHand {
 
 	public Deck()
 	{
-		cards = new ArrayList<Card>();
+		ArrayList<Card> cards = new ArrayList<Card>();
 		cards.addAll(CardUtil.createDeck());
 		CardUtil.shuffle(cards);
 	}
 	
 	public Deck(int decks)
 	{
-		cards = new ArrayList<Card>();
+		ArrayList<Card> cards = new ArrayList<Card>();
 		for(int i = 0; i < decks; i++)
 		{
 			cards.addAll(CardUtil.createDeck());
