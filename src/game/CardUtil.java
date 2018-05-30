@@ -23,4 +23,27 @@ public class CardUtil {
 		Collections.shuffle(cards);
 	}
 	
+	public static int getValue(ArrayList<Card> cards)
+	{
+		int count = 0;
+		for(int i = 0; i < cards.size(); i++)
+		{
+			if(cards.get(i).getValue()!=CardValue.ACE)
+			{
+				count += cards.get(i).getNumericalValue();
+			}
+		}
+		for(int i = 0; i < cards.size(); i++)
+		{
+			if(cards.get(i).getValue()==CardValue.ACE)
+			{
+				if(count<=10)
+					count += 11;
+				else
+					count += 1;
+			}
+		}
+		return count;
+	}
+	
 }

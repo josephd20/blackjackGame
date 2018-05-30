@@ -21,4 +21,9 @@ public class Card {
 		return value;
 	}
 	
+	public int getNumericalValue()
+	{
+		int[] values = {1,2,3,4,5,6,7,8,9,10,10,10,11};
+		return values[this.getValue().ordinal()];
+	}
 }
