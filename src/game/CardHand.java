@@ -8,6 +8,7 @@ public abstract class CardHand {
 	
 	abstract Card removeCard();
 	abstract void addCard(Card c);
+	abstract int score();
 	
 	// TEST
 	

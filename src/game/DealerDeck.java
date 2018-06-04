@@ -22,13 +22,21 @@ public class DealerDeck extends CardHand {
 	}
 	
 	@Override
-	void addCard(Card c) {
+	public void addCard(Card c) {
 		cards.add(c);
 	}
 
 	@Override
-	Card removeCard() {
+	public Card removeCard() {
 		return cards.remove(0);
+	}
+	
+	public int score() {
+		int s = 0;
+		for(Card c:cards) {
+			s+=c.getNumericalValue();
+		}
+		return s;
 	}
 	
 }
