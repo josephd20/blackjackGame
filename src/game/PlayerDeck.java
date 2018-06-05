@@ -6,7 +6,7 @@ public class PlayerDeck extends CardHand {
 
 	public PlayerDeck()
 	{
-		ArrayList<Card> cards = new ArrayList<Card>();
+		cards = new ArrayList<Card>();
 	}
 
 	@Override
@@ -22,6 +22,11 @@ public class PlayerDeck extends CardHand {
 	double getValue()
 	{
 		return CardUtil.getValue(cards);
+	}
+	
+	public String toString()
+	{
+		return cards.toString();
 	}
 
 }

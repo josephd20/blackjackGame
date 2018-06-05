@@ -6,14 +6,14 @@ public class Deck extends CardHand {
 
 	public Deck()
 	{
-		ArrayList<Card> cards = new ArrayList<Card>();
+		cards = new ArrayList<Card>();
 		cards.addAll(CardUtil.createDeck());
 		CardUtil.shuffle(cards);
 	}
 	
 	public Deck(int decks)
 	{
-		ArrayList<Card> cards = new ArrayList<Card>();
+		cards = new ArrayList<Card>();
 		for(int i = 0; i < decks; i++)
 		{
 			cards.addAll(CardUtil.createDeck());
@@ -37,6 +37,11 @@ public class Deck extends CardHand {
 	
 	void shuffle() {
 		CardUtil.shuffle(cards);
+	}
+	
+	ArrayList<Card> getCards()
+	{
+		return cards;
 	}
 	
 }

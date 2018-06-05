@@ -1,8 +1,6 @@
 package game;
 
 public interface Moves {
-
-	void initialBet(double bet);
 	
 	void hit(Card c);
 	void stand();

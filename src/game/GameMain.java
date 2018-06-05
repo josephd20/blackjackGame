@@ -1,23 +1,22 @@
 package game;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameMain {
 
 	static GameTable table;
+	static Player human;
+	static Player dealer;
 	static Scanner in;
+	static Deck mainDeck;
 	
 	public static void main(String[] args) {
 
 		System.out.println("welcome");
 		in = new Scanner(System.in);
 		
-		table = new GameTable();
+		table = new GameTable(2);
 		double casinoBank = 5E7;
-		
-		System.out.println("how many playaz");
-		int number = in.nextInt();
 		
 		System.out.println("what you name");
 		String name = in.next();
@@ -26,114 +25,152 @@ public class GameMain {
 		double humanMoney = in.nextDouble();
 		double bet;
 		
-		Player dealer = new Player("dealer",casinoBank);
-		Player human = new Player(name,humanMoney);
+		dealer = new Player("dealer",casinoBank);
+		human = new Player(name,humanMoney);
 
 		table.addPlayer(dealer);
 		table.addPlayer(human);
+		mainDeck = table.getMainDeck();
 		
 		boolean gameContinue = true;
 		
 		do
 		{
-			System.out.println("You have " + human.getMoney() + " dollars.");
+			System.out.println("You have $" + human.getMoney());
+			double initialMoney = human.getMoney();
+			
             do {
-            	System.out.println("How many dollars do you want to bet?  (Enter 0 to end.)");
+            	System.out.println("How many dollars do you want to bet?  (Enter $0 to end)");
             	bet = in.nextInt();
             	if (bet < 0 || bet > human.getMoney())
-            		System.out.println("Your answer must be between 0 and " + human.getMoney() + '.');
+            		System.out.println("Your answer must be between $0 and $" + human.getMoney());
             } while (bet < 0 || bet > human.getMoney());
             if (bet == 0)
                break;
-            human.initialBet(bet);
-            boolean roundWin = playBlackjackHand();
-            if (roundWin)
-               money = money + bet;
-            else
-               money = money - bet;
-            if (money == 0) {
-               TextIO.putln("Looks like you've are out of money!");
-               gameContinue = false;
-            }
+            
+            dealer.initialBet(human.initialBet(bet));
+           	VictoryType vt = playBlackjack();
+           	human.payout(vt);
+           	
+           	if(initialMoney < human.getMoney())
+           	{
+           		System.out.println(human.getName() + " wins $" + (human.getMoney() - initialMoney));
+           	}
+           	else if(initialMoney == human.getMoney())
+           	{
+           		System.out.println(human.getName() + " stayed even with $" + (human.getMoney() - initialMoney));
+           	}
+           	else
+           	{
+           		System.out.println(human.getName() + " lost $" + (initialMoney - human.getMoney()));
+           	}
+           	System.out.println("");
+           	
+            human.clearDeck();
+            dealer.clearDeck();
 		}
 		while (gameContinue);
+		
+		System.out.println("Thanks for playing!");
 
 	}
 	
-	static boolean playBlackjack()
+	static VictoryType playBlackjack()
 	{
-		Player dealer = table.getPlayer(0);
-     	Player human = table.getPlayer(1);
-     	Deck mainDeck = table.getMainDeck();
  
      	mainDeck.shuffle();
      	dealer.hit(mainDeck.dealCard());
      	dealer.hit(mainDeck.dealCard());
      	human.hit(mainDeck.dealCard());
      	human.hit(mainDeck.dealCard());
-     
+        
+        if (dealer.getValueOfHand() == 21 && human.getValueOfHand() == 21) {
+        	System.out.println("Tie. Both " + human.getName() + " and " + dealer.getName() + " got blackjack.");
+			return VictoryType.TIE;
+		}
+        else if (dealer.getValueOfHand() == 21) {
+        	System.out.println( human.getName() + " loses. " + dealer.getName() + " got blackjack.");
+        	return VictoryType.LOSS;
+		}
+		else if (human.getValueOfHand() == 21) {
+			System.out.println( human.getName() + " wins with blackjack.");
+			return VictoryType.BLACKJACK;
+		}
+		
+		while(human.inPlay())
+		{
+			displayCards();
+			System.out.println("choose move (h-hit/d-doubledown/s-stand)");
+			String userAction = in.next();
+			switch(userAction)
+			{
+				case "H":
+				case "h":
+					System.out.println(human.getName() + " hits.");
+					human.hit(mainDeck.dealCard());
+					break;
+				case "D":
+				case "d":
+					System.out.println(human.getName() + " doubles down.");
+					human.doubleDown(mainDeck.dealCard());
+					break;
+				case "S":
+				case "s":
+				default:
+					System.out.println(human.getName() + " stands.");
+					human.stand();
+					break;
+			}
+		}
+		while(dealer.inPlay())
+		{
+			if(dealer.getValueOfHand()<17)
+			{
+				dealer.doubleDown(mainDeck.dealCard());
+			}
+			else if(dealer.getValueOfHand()<17)
+			{
+				dealer.hit(mainDeck.dealCard());
+			}
+			else
+			{
+				dealer.stand();
+			}
+		}
         displayCards();
-     	
-		if (dealer.getValueOfHand() == 21) {
-			return false;
+		
+        if (dealer.getValueOfHand() == 21 && human.getValueOfHand() == 21) {
+        	System.out.println("Tie. Both " + human.getName() + " and " + dealer.getName() + " got blackjack.");
+			return VictoryType.TIE;
 		}
-		 
-		if (human.getValueOfHand() == 21) {
-			return true;
+        else if (dealer.getValueOfHand() == 21) {
+        	System.out.println( human.getName() + " loses. " + dealer.getName() + " got blackjack.");
+        	return VictoryType.LOSS;
 		}
-		 
-		boolean gameContinue = true;
-		 
-		while (gameContinue) {
-			char userAction;
-			while(userAction=)
-		} // end while loop
-     
-     /* If we get to this point, the user has Stood with 21 or less.  Now, it's
-        the dealer's chance to draw.  Dealer draws cards until the dealer's
-        total is > 16.  If dealer goes over 21, the dealer loses.
-     */
+		else if (human.getValueOfHand() == 21) {
+			System.out.println( human.getName() + " wins with blackjack.");
+			return VictoryType.BLACKJACK;
+		}
+		else if (human.getValueOfHand() < 21 && (dealer.getValueOfHand() > 21 || dealer.getValueOfHand() < human.getValueOfHand())) {
+			System.out.println( human.getName() + " wins.");
+        	return VictoryType.WIN;
+		}
+		else if (dealer.getValueOfHand() < 21 && (human.getValueOfHand() > 21 || human.getValueOfHand() < dealer.getValueOfHand())) {
+			System.out.println( human.getName() + " loses.");
+			return VictoryType.LOSS;
+		}
+		else {
+			System.out.println("Tie. Both " + human.getName() + " and " + dealer.getName() + " busted.");
+			return VictoryType.TIE;
+		}
 
-     TextIO.putln();
-     TextIO.putln("User stands.");
-     TextIO.putln("Dealer's cards are");
-     TextIO.putln("    " + dealerHand.getCard(0));
-     TextIO.putln("    " + dealerHand.getCard(1));
-     while (dealerHand.getBlackjackValue() <= 16) {
-        Card newCard = deck.dealCard();
-        TextIO.putln("Dealer hits and gets the " + newCard);
-        dealerHand.addCard(newCard);
-        if (dealerHand.getBlackjackValue() > 21) {
-           TextIO.putln();
-           TextIO.putln("Dealer busted by going over 21.  You win.");
-           return true;
-        }
-     }
-     TextIO.putln("Dealer's total is " + dealerHand.getBlackjackValue());
-     
-     /* If we get to this point, both players have 21 or less.  We
-        can determine the winner by comparing the values of their hands. */
-     
-     TextIO.putln();
-     if (dealerHand.getBlackjackValue() == userHand.getBlackjackValue()) {
-        TextIO.putln("Dealer wins on a tie.  You lose.");
-        return false;
-     }
-     else if (dealerHand.getBlackjackValue() > userHand.getBlackjackValue()) {
-        TextIO.putln("Dealer wins, " + dealerHand.getBlackjackValue() 
-                         + " points to " + userHand.getBlackjackValue() + ".");
-        return false;
-     }
-     else {
-        TextIO.putln("You win, " + userHand.getBlackjackValue() 
-                         + " points to " + dealerHand.getBlackjackValue() + ".");
-        return true;
-     }
-
-  }  // end playBlackjack()
+  }
 	
 	public static void displayCards()
 	{
-		System.out.println();
+		System.out.println("");
+		System.out.println(human.getName() + ":" + (int) human.getValueOfHand());
+		System.out.println(dealer.getName() + ":" + (int) dealer.getValueOfHand());
+		System.out.println("");
 	}
 }

@@ -15,11 +15,40 @@ public class Player implements Moves {
 		deck = new PlayerDeck();
 	}
 
-	@Override
-	public void initialBet(double bet) {
+	public double initialBet(double bet) {
 		currentBet = bet;
 		money -= bet;
 		inPlay = true;
+		return currentBet;
+	}
+	
+	public double payout(VictoryType vt) {
+		double payout = 0;
+		switch (vt)
+		{
+			case TIE:
+				payout = currentBet;
+				break;
+			case LOSS:
+				break;
+			case WIN:
+				payout = currentBet * 2;
+				break;
+			case BLACKJACK:
+				payout = currentBet * 2.5;
+				break;
+			case INSURANCE:
+				payout = currentBet * 3;
+				break;
+			case SURRENDER:
+				payout = currentBet * 0.5;
+				break;
+			default:
+				break;
+		}
+		currentBet = 0;
+		money += payout;
+		return payout;
 	}
 	
 	@Override
@@ -42,17 +71,21 @@ public class Player implements Moves {
 			money -= currentBet;
 			currentBet *= 2;
 		}
+		else
+		{
+			currentBet += money;
+			money = 0;
+		}
+		inPlay = false;
 	}
 
 	@Override
 	public void surrender() {
-		currentBet *= 0.5;
-		money += currentBet;
+		inPlay = false;
 	}
 
 	@Override
 	public void split() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -79,5 +112,10 @@ public class Player implements Moves {
 	public double getValueOfHand()
 	{
 		return deck.getValue();
+	}
+	
+	public PlayerDeck getDeck()
+	{
+		return deck;
 	}
 }
