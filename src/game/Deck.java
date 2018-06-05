@@ -31,4 +31,12 @@ public class Deck extends CardHand {
 		return cards.remove(0);
 	}
 	
+	Card dealCard() {
+		return this.removeCard();
+	}
+	
+	void shuffle() {
+		CardUtil.shuffle(cards);
+	}
+	
 }

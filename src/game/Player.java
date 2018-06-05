@@ -61,4 +61,23 @@ public class Player implements Moves {
 		deck = new PlayerDeck();
 	}
 	
+	public boolean inPlay()
+	{
+		return inPlay;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	public double getMoney()
+	{
+		return money;
+	}
+	
+	public double getValueOfHand()
+	{
+		return deck.getValue();
+	}
 }

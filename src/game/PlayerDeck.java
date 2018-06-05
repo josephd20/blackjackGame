@@ -18,5 +18,10 @@ public class PlayerDeck extends CardHand {
 	void addCard(Card c) {
 		cards.add(c);
 	}
+	
+	double getValue()
+	{
+		return CardUtil.getValue(cards);
+	}
 
 }
