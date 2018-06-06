@@ -32,11 +32,20 @@ public class PlayerDeck extends CardHand {
 	}
 
 	Card removeCard() {
-		return null;
+		return cards.remove(0);
 	}
 
 	void addCard(Card c) {
-		
+		cards.add(c);
+	}
+	
+	/**
+	 * Returns this deck as an ArrayList of Cards
+	 * @return ArrayList of Cards in this deck
+	 */
+	ArrayList<Card> getCards()
+	{
+		return cards;
 	}
 
 }

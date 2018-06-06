@@ -117,7 +117,7 @@ public class Player implements Moves {
 		return money;
 	}
 	
-	public double getValueOfHand()
+	public int getValueOfHand()
 	{
 		return deck.getValue();
 	}

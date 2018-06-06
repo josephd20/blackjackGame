@@ -16,6 +16,12 @@ public class CardTester {
 		System.out.println();
 		System.out.println(CardUtil.getValue(tester.getCards()));
 
+		PlayerDeck q = new PlayerDeck();
+		q.addCard(tester.dealCard());
+		q.addCard(tester.dealCard());
+		System.out.println(CardUtil.getValue(q.getCards()));
+		System.out.println(q.getCards());
+		
 	}
 
 }

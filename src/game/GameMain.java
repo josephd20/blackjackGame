@@ -167,8 +167,8 @@ public class GameMain {
 	public static void displayCards()
 	{
 		System.out.println("");
-		System.out.println(human.getName() + ":" + (int) human.getValueOfHand());
-		System.out.println(dealer.getName() + ":" + (int) dealer.getValueOfHand());
+		System.out.println(human.getName() + ":" + human.getValueOfHand());
+		System.out.println(dealer.getName() + ":" + dealer.getValueOfHand());
 		System.out.println("");
 	}
 }
