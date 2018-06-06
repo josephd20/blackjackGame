@@ -65,5 +65,5 @@ public class Deck extends CardHand {
 	{
 		return cards;
 	}
-	
+
 }

@@ -16,34 +16,6 @@ public class PlayerDeck extends CardHand {
 	{
 		cards = new ArrayList<Card>();
 	}
-
-	@Override
-<<<<<<< HEAD
-	public Card removeCard() {
-		
-		return null;
-	}
-
-	@Override
-	public void addCard(Card c) {
-		cards.add(c);
-	}
-	
-	public int score() {
-		int s = 0;
-		for(Card c:cards) {
-			s+=c.getNumericalValue();
-		}
-		return s;
-=======
-	Card removeCard() {
-		return cards.remove(0);
-	}
-
-	@Override
-	void addCard(Card c) {
-		cards.add(c);
-	}
 	
 	/**
 	 * Returns the numerical Blackjack value of this card hand, as according to typical rules of Blackjack. Aces are worth 11 unless the total is otherwise over 21, in which case Aces are worth 1.
@@ -57,7 +29,14 @@ public class PlayerDeck extends CardHand {
 	public String toString()
 	{
 		return cards.toString();
->>>>>>> fd50d9cd24a826a34f9d5dc6d7d2b8a9313998d8
+	}
+
+	Card removeCard() {
+		return null;
+	}
+
+	void addCard(Card c) {
+		
 	}
 
 }

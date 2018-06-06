@@ -65,19 +65,16 @@ public class Player implements Moves {
 		return payout;
 	}
 	
-	@Override
 	public void hit(Card c) {
 		deck.addCard(c);
 		if(CardUtil.getValue(deck.cards)>21)
 			inPlay = false;
 	}
 
-	@Override
 	public void stand() {
 		inPlay = false;
 	}
 
-	@Override
 	public void doubleDown(Card c) {
 		deck.addCard(c);
 		if(money>currentBet)
@@ -93,17 +90,14 @@ public class Player implements Moves {
 		inPlay = false;
 	}
 
-	@Override
 	public void surrender() {
 		inPlay = false;
 	}
 
-	@Override
 	public void split() {
 		
 	}
 
-	@Override
 	public void clearDeck() {
 		deck = new PlayerDeck();
 	}
