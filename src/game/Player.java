@@ -1,5 +1,9 @@
 package game;
 
+/**
+ * Class modeling a Player, which implements the Moves interface.
+ * @author Joseph Daher
+ */
 public class Player implements Moves {
 
 	private String name;
@@ -8,6 +12,11 @@ public class Player implements Moves {
 	private PlayerDeck deck;
 	private boolean inPlay;
 	
+	/**
+	 * Constructor for Player class
+	 * @param name name of Player
+	 * @param money amount of money Player has
+	 */
 	public Player(String name, double money)
 	{
 		this.name = name;
@@ -15,6 +24,11 @@ public class Player implements Moves {
 		deck = new PlayerDeck();
 	}
 
+	/**
+	 * 
+	 * @param bet amount of money wagered initially
+	 * @return bet
+	 */
 	public double initialBet(double bet) {
 		currentBet = bet;
 		money -= bet;
