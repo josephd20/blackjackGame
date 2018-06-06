@@ -26,15 +26,20 @@ public class PlayerDeck extends CardHand {
 		return CardUtil.getValue(cards);
 	}
 	
+	/**
+	 * Returns the arrayList of cards as a String, used for debugging purposes.
+	 */
 	public String toString()
 	{
 		return cards.toString();
 	}
 
+	@Override
 	Card removeCard() {
 		return cards.remove(0);
 	}
 
+	@Override
 	void addCard(Card c) {
 		cards.add(c);
 	}
@@ -48,8 +53,37 @@ public class PlayerDeck extends CardHand {
 		return cards;
 	}
 
-	public void displayDeck() {
-		CardUtil.printCards(cards);
+	/**
+	 * Displays the cards in this deck by calling CardUtil.printCards()
+	 * @return 
+	 */
+	public String displayDeck() {
+		return CardUtil.displayCards(cards);
+	}
+	
+	/**
+	 * Flips all cards in this hand up
+	 */
+	public void flipAllUp()
+	{
+		for(Card c : cards)
+			if(c.getFaceDown())
+				c.flip();
+	}
+	
+	/**
+	 * flips the first card in the hand that is facedown
+	 * @return true if there is a card to flip, false if not
+	 */
+	public boolean flip()
+	{
+		for(Card c : cards) {
+			if(c.getFaceDown()) {
+				c.flip();
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

@@ -5,5 +5,5 @@ package game;
  * @author Joseph Daher
  */
 public enum VictoryType {
-	BLACKJACK, WIN, TIE, LOSS, INSURANCE, SURRENDER
+	BLACKJACK, WIN, TIE, LOSS
 }

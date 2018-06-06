@@ -46,8 +46,36 @@ public class Card {
 	 */
 	public int getNumericalValue()
 	{
-		int[] values = {2,3,4,5,6,7,8,9,10,10,10,11};
-		return values[this.getValue().ordinal()];
+		switch(getValue())
+		{
+			case TWO:
+				return 2;
+			case THREE:
+				return 3;
+			case FOUR:
+				return 4;
+			case FIVE:
+				return 5;
+			case SIX:
+				return 6;
+			case SEVEN:
+				return 7;
+			case EIGHT:
+				return 8;
+			case NINE:
+				return 9;
+			case TEN:
+				return 10;
+			case JACK:
+				return 10;
+			case QUEEN:
+				return 10;
+			case KING:
+				return 10;
+			case ACE:
+			default:
+				return 1;
+		}
 	}
 	
 	public boolean getFaceDown()
