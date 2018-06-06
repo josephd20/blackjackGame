@@ -1,6 +1,5 @@
 package game;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameMain {
@@ -59,9 +58,13 @@ public class GameMain {
             		break;
             	}            		
             	
-            	System.out.println("How many dollars do you want to bet? The buy-in is at $"+ buyIn + ".");
-            	System.out.println("To leave the table, bet $0");
+            	if(roundCount==1)
+            	{
+            		System.out.println("How many dollars do you want to bet? The buy-in is at $"+ buyIn + ".");
+            		System.out.println("To leave the table, bet $0");
+            	}
             	
+            	System.out.print("Your Bet: $");
             	if(in.hasNextDouble())
             		bet = (double) (int) in.nextDouble();
             	else
@@ -83,15 +86,15 @@ public class GameMain {
            	
            	if(initialRoundMoney < human.getMoney())
            	{
-           		System.out.println(human.getName() + " wins $" + (human.getMoney() - initialRoundMoney));
+           		System.out.println(human.getName() + " won $" + (human.getMoney() - initialRoundMoney) + " this round.");
            	}
            	else if(initialRoundMoney == human.getMoney())
            	{
-           		System.out.println(human.getName() + " stayed even with $" + (human.getMoney() - initialRoundMoney));
+           		System.out.println(human.getName() + " stayed even this round.");
            	}
            	else
            	{
-           		System.out.println(human.getName() + " lost $" + (initialRoundMoney - human.getMoney()));
+           		System.out.println(human.getName() + " lost $" + (initialRoundMoney - human.getMoney()) + " this round.");
            	}
            	System.out.println(human.getName() + " now has $" + human.getMoney());
            	System.out.println("");
@@ -107,9 +110,27 @@ public class GameMain {
 		while (gameContinue);
 		
 		System.out.println("Thanks for playing!");
+		if(initialMoney < human.getMoney())
+       	{
+       		System.out.println(human.getName() + " won $" + (human.getMoney() - initialMoney) + " overall.");
+       	}
+       	else if(initialMoney == human.getMoney())
+       	{
+       		System.out.println(human.getName() + " stayed even overall.");
+       	}
+       	else
+       	{
+       		System.out.println(human.getName() + " lost $" + (initialMoney - human.getMoney()) + " overall.");
+       	}
+		
 		in.close();
 
 	}
+	
+	/**
+	 * Method for one round of blackjack
+	 * @return VictoryType object which says if player won, lost or tied round.
+	 */
 	static VictoryType playBlackjack()
 	{
  
@@ -191,7 +212,6 @@ public class GameMain {
 			displayCardText();
 		}
         
-		System.out.println(human.getName() + ": " + human.getValueOfHand() + " to " + dealer.getName() + ": " + dealer.getValueOfHand());
         if (dealer.getValueOfHand() == 21 && human.getValueOfHand() == 21) {
         	System.out.println("Tie. Both " + human.getName() + " and " + dealer.getName() + " got blackjack.");
 			return VictoryType.TIE;
@@ -237,6 +257,8 @@ public class GameMain {
 		System.out.println(human.displayDeck());
 		System.out.println(dealer.getName() + ":");
 		System.out.println(dealer.displayDeck());
+		System.out.println(human.getName() + ": " + human.getValueOfHand() + " to " + dealer.getName() + ": " + dealer.getValueOfHand());
+		System.out.println("");
 	}
 	
 }

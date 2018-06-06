@@ -64,9 +64,9 @@ public class CardUtil {
 	}
 	
 	/**
-	 * 
-	 * @param cards
-	 * @return
+	 * Returns a string used to display cards in the game
+	 * @param cards arrayList of cards to be displayed
+	 * @return String showing cards in arrayList of cards
 	 */
 	public static String displayCards(ArrayList<Card> cards)
 	{
