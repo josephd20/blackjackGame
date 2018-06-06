@@ -63,4 +63,84 @@ public class CardUtil {
 		return count;
 	}
 	
+	/**
+	 * 
+	 * @param cards
+	 * @return
+	 */
+	public static String displayCards(ArrayList<Card> cards)
+	{
+		String s = "";
+		for(int i = 0; i < cards.size(); i++)
+			s += "┌─────────┐" + "  ";
+		s += "\n";
+		for(int i = 0; i < 7; i++)
+		{
+			for(int j = 0; j < cards.size(); j++)
+			{
+				if(cards.get(j).getFaceDown())
+					s += "│░░░░░░░░░│" + "  ";
+				else
+					if(i==0)
+						s += "│" + cards.get(j).getStringValue(true) + "       │" + "  ";
+					else if(i==3)
+						s += "│    " + cards.get(j).getStringSuit() + "    │" + "  ";
+					else if(i==6)
+						s += "│       " + cards.get(j).getStringValue(false) + "│" + "  ";
+					else
+						s += "│         │" + "  ";
+			}
+			s += "\n";
+		}
+		for(int i = 0; i < cards.size(); i++)
+			s += "└─────────┘" + "  ";
+		return s;
+	}
+	
+	public static void printCards(ArrayList<Card> cards)
+	{
+		for(int i = 0; i < cards.size(); i++)
+			System.out.print("┌─────────┐" + "  ");
+		System.out.print("\n");
+		for(int i = 0; i < 7; i++)
+		{
+			for(int j = 0; j < cards.size(); j++)
+			{
+				if(cards.get(j).getFaceDown())
+					System.out.print("│░░░░░░░░░│" + "  ");
+				else
+					if(i==0)
+						System.out.print("│" + cards.get(j).getStringValue(true) + "       │" + "  ");
+					else if(i==3)
+						System.out.print("│    " + cards.get(j).getStringSuit() + "    │" + "  ");
+					else if(i==6)
+						System.out.print("│       " + cards.get(j).getStringValue(false) + "│" + "  ");
+					else
+						System.out.print("│         │" + "  ");
+			}
+			System.out.print("\n");
+		}
+		for(int i = 0; i < cards.size(); i++)
+			System.out.print("└─────────┘" + "  ");
+		System.out.print("\n");
+	}
+	
+	public static void printCardsAlt(ArrayList<Card> cards)
+	{
+		for(int i = 0; i < cards.size(); i++)
+			System.out.print("┌─────────┐" + "  ");
+		System.out.print("\n");
+		for(int i = 0; i < 7; i++)
+		{
+			for(int j = 0; j < cards.size(); j++)
+			{
+					System.out.print("│░░░░░░░░░│" + "  ");
+			}
+			System.out.print("\n");
+		}
+		for(int i = 0; i < cards.size(); i++)
+			System.out.print("└─────────┘" + "  ");
+		System.out.print("\n");
+	}
+	
 }

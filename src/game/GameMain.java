@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameMain {
@@ -97,7 +98,7 @@ public class GameMain {
 		
 		while(human.inPlay())
 		{
-			displayCards();
+			displayCardText();
 			System.out.println("choose move (h-hit/d-doubledown/s-stand)");
 			String userAction = in.next();
 			switch(userAction)
@@ -134,9 +135,9 @@ public class GameMain {
 			{
 				dealer.stand();
 			}
+			displayCardText();
 		}
-        displayCards();
-		
+        
         if (dealer.getValueOfHand() == 21 && human.getValueOfHand() == 21) {
         	System.out.println("Tie. Both " + human.getName() + " and " + dealer.getName() + " got blackjack.");
 			return VictoryType.TIE;
@@ -164,13 +165,16 @@ public class GameMain {
 
 	}
 	
-	public static void displayCards()
+	public static void displayCardText()
 	{
 		System.out.println("");
-		System.out.println(human.getName() + ":" + human.getValueOfHand());
-		System.out.println(dealer.getName() + ":" + dealer.getValueOfHand());
+		System.out.println(human.getName() + ":");
+		human.displayDeck();
+		System.out.println(dealer.getName() + ":");
+		dealer.displayDeck();
 		System.out.println("");
 	}
+	
 }
 
 

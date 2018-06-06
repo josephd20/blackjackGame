@@ -8,6 +8,7 @@ public class Card {
 
 	private CardSuit suit;
 	private CardValue value;
+	private boolean faceDown;
 	
 	/**
 	 * Constructor for Card requires a designated suit and value.
@@ -18,6 +19,7 @@ public class Card {
 	{
 		this.suit = suit;
 		this.value = value;
+		faceDown = true;
 	}
 	
 	/**
@@ -46,5 +48,101 @@ public class Card {
 	{
 		int[] values = {2,3,4,5,6,7,8,9,10,10,10,11};
 		return values[this.getValue().ordinal()];
+	}
+	
+	public boolean getFaceDown()
+	{
+		return faceDown;
+	}
+	
+	public void flip()
+	{
+		faceDown = !faceDown;
+	}
+	
+	public String getStringValue(boolean top)
+	{
+		if(top)
+			switch(getValue())
+			{
+				case TWO:
+					return "2 ";
+				case THREE:
+					return "3 ";
+				case FOUR:
+					return "4 ";
+				case FIVE:
+					return "5 ";
+				case SIX:
+					return "6 ";
+				case SEVEN:
+					return "7 ";
+				case EIGHT:
+					return "8 ";
+				case NINE:
+					return "9 ";
+				case TEN:
+					return "10";
+				case JACK:
+					return "J ";
+				case QUEEN:
+					return "Q ";
+				case KING:
+					return "K ";
+				case ACE:
+				default:
+					return "A ";
+			}
+		else
+			switch(getValue())
+			{
+				case TWO:
+					return " 2";
+				case THREE:
+					return " 3";
+				case FOUR:
+					return " 4";
+				case FIVE:
+					return " 5";
+				case SIX:
+					return " 6";
+				case SEVEN:
+					return " 7";
+				case EIGHT:
+					return " 8";
+				case NINE:
+					return " 9";
+				case TEN:
+					return "10";
+				case JACK:
+					return " J";
+				case QUEEN:
+					return " Q";
+				case KING:
+					return " K";
+				case ACE:
+				default:
+					return " A";
+			}
+	}
+	
+	public String getStringSuit()
+	{
+		switch(getSuit())
+		{
+			case HEARTS:
+				return "♥";
+				// ♥
+			case SPADES:
+				return "♠";
+				// ♠
+			case DIAMONDS:
+				return "♦";
+				// ♦
+			case CLUBS:
+			default:
+				return "♣";
+				// ♣
+		}
 	}
 }

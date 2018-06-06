@@ -126,4 +126,9 @@ public class Player implements Moves {
 	{
 		return deck;
 	}
+	
+	public void displayDeck()
+	{
+		deck.displayDeck();
+	}
 }

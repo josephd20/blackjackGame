@@ -48,4 +48,8 @@ public class PlayerDeck extends CardHand {
 		return cards;
 	}
 
+	public void displayDeck() {
+		CardUtil.printCards(cards);
+	}
+
 }
