@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Class for a table of blackjack with players and a main deck
- * @author Joseph Daher
+ * @author Joseph Daher and Ben Hanley
  */
 public class GameTable {
 

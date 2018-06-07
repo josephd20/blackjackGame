@@ -5,7 +5,7 @@ import java.util.Collections;
 
 /**
  * A class with an assortment of useful static methods dealing with Cards
- * @author Joseph Daher
+ * @author Joseph Daher and Ben Hanley
  */
 public class CardUtil {
 	

@@ -2,7 +2,7 @@ package game;
 
 /**
  * Class modeling a playing card, with a suit (heart/spades/diamonds/clubs) and value (1-10/jack/queen/king/ace)
- * @author Joseph Daher
+ * @author Joseph Daher and Ben Hanley
  */
 public class Card {
 

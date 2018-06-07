@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Subclass of CardHand for all Player card hands, containing an additional method to get the Blackjack value of the hand.
- * @author Joseph Daher
+ * @author Joseph Daher and Ben Hanley
  *
  */
 public class PlayerDeck extends CardHand {

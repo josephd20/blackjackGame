@@ -2,7 +2,7 @@ package game;
 
 /**
  * Class modeling a Player, which implements the Moves interface.
- * @author Joseph Daher
+ * @authors Joseph Daher and Ben Hanley
  */
 public class Player implements Moves {
 

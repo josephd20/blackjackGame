@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Subclass of CardHand to model the dealer deck in Blackjack, consisting of one or more complete deck of cards that are shuffled.
- * @author Joseph Daher
+ * @author Joseph Daher and Ben Hanley
  */
 public class Deck extends CardHand {
 

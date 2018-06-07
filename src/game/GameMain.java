@@ -250,7 +250,9 @@ public class GameMain {
 		}
 
 	}
-	
+	/*
+	 * Displays
+	 */
 	public static void displayCardText()
 	{
 		System.out.println(human.getName() + ":");

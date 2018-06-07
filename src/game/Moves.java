@@ -2,7 +2,7 @@ package game;
 
 /**
  * Interface of possible moves in Blackjack implemented by the Player class
- * @author Joseph Daher
+ * @author Joseph Daher and Ben Hanley
  */
 
 public interface Moves {
