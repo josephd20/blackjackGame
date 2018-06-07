@@ -257,7 +257,7 @@ public class GameMain {
 		System.out.println(human.displayDeck());
 		System.out.println(dealer.getName() + ":");
 		System.out.println(dealer.displayDeck());
-		System.out.println(human.getName() + ": " + human.getValueOfHand() + " to " + dealer.getName() + ": " + dealer.getValueOfHand());
+		System.out.println("You have a score of " + human.getValueOfHand()+", "+human.getName());
 		System.out.println("");
 	}
 	
