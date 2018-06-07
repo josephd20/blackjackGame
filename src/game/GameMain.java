@@ -24,7 +24,7 @@ public class GameMain {
 		System.out.println("");
 		
 		double humanMoney = 50000;
-		double bet;
+		double bet=0;
 		double initialMoney = humanMoney;
 		
 		System.out.println("You have been given $" + humanMoney +" to start. Good luck!");
@@ -66,8 +66,13 @@ public class GameMain {
             	}
             	
             	System.out.print("Your Bet: $");
-            	if(in.hasNextDouble())
-            		bet = (double) (int) in.nextDouble();
+            	if(in.hasNextDouble()) {
+            		double x = in.nextDouble();
+            		if(x<=human.getMoney())
+            			bet = (double) (int) x;
+            		else System.out.println("That was an invalid bet " + human.getName()+". You should know better. Your bet has defaulted to $"+buyIn);
+            	}
+            		
             	else
             		System.out.println("That was an invalid bet " + human.getName()+". You should know better. Your bet has defaulted to $"+buyIn);
             		bet = buyIn;
