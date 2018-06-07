@@ -12,6 +12,7 @@ public class GameMain {
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to the Bronxville Casino!");
+		System.out.println("**Please note that this program is intended for fun casual games only.**\n**We are in no way condoning gambling for adults or minors.**");
 		System.out.println("");
 		in = new Scanner(System.in);
 		
@@ -68,6 +69,7 @@ public class GameMain {
             	if(in.hasNextDouble())
             		bet = (double) (int) in.nextDouble();
             	else
+            		System.out.println("That was an invalid bet " + human.getName()+". You should know better. Your bet has defaulted to $"+buyIn);
             		bet = buyIn;
             	
             	if ((bet < buyIn && bet != 0) || bet > human.getMoney())
