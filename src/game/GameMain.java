@@ -27,7 +27,7 @@ public class GameMain {
 		double bet;
 		double initialMoney = humanMoney;
 		
-		System.out.println("You have been given $" + humanMoney +" to start. Good luck!");
+		System.out.println("You have been given $" + humanMoney + " to start. Good luck!");
 		System.out.println("");
 		
 		dealer = new Player("Dealer",casinoBank);
@@ -67,15 +67,15 @@ public class GameMain {
             	
             	System.out.print("Your Bet: $");
             	if(in.hasNextDouble())
-            		bet = (double) (int) in.nextDouble();
+            		bet = in.nextDouble();
             	else
             		System.out.println("That was an invalid bet " + human.getName()+". You should know better. Your bet has defaulted to $"+buyIn);
             		bet = buyIn;
             	
-            	if ((bet < buyIn && bet != 0) || bet > human.getMoney())
+            	if ((bet < buyIn && bet != 0.0) || bet > human.getMoney())
             		System.out.println("Your answer must be between $" + buyIn + " and $" + human.getMoney());
             	
-            } while ((bet < buyIn && bet != 0) || bet > human.getMoney());
+            } while ((bet < buyIn && bet != 0.0) || bet > human.getMoney());
             
             System.out.println("");
             
@@ -242,7 +242,7 @@ public class GameMain {
 			System.out.println( human.getName() + " loses because " + dealer.getName() + " has a better hand.");
 			return VictoryType.LOSS;
 		}
-		else if(dealer.getValueOfHand()==human.getValueOfHand()) {
+		else if(dealer.getValueOfHand()==human.getValueOfHand() && dealer.getValueOfHand() < 21) {
 			System.out.println("Tie. Both " + human.getName() + " and " + dealer.getName() + " have equal value hands.");
 			return VictoryType.TIE;
 		}
