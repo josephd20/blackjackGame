@@ -66,9 +66,7 @@ public class GameMain {
             	}
             	
             	System.out.print("Your Bet: $");
-            	if(in.hasNextDouble())
-            		bet = in.nextDouble();
-            	else
+
             		System.out.println("That was an invalid bet " + human.getName()+". You should know better. Your bet has defaulted to $"+buyIn);
             		bet = buyIn;
             	
