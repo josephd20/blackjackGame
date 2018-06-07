@@ -250,9 +250,7 @@ public class GameMain {
 		}
 
 	}
-	/*
-	 * Displays
-	 */
+	//Displays card and score of player and dealer
 	public static void displayCardText()
 	{
 		System.out.println(human.getName() + ":");

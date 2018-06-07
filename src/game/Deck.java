@@ -32,12 +32,19 @@ public class Deck extends CardHand {
 		CardUtil.shuffle(cards);
 	}
 	
-	@Override
+	/**
+	 * Method implemented by parent class
+	 * Adds card to a card hand/deck
+	 * @param c Card added
+	 */
 	void addCard(Card c) {
 		cards.add(c);
 	}
 
-	@Override
+	/**
+	 * Method implemented by parent class
+	 * Removes card from a card hand/deck
+	 */
 	Card removeCard() {
 		return cards.remove(0);
 	}

@@ -12,7 +12,6 @@ public interface Moves {
 	void doubleDown(Card c);
 	void surrender();
 	void split();
-	
 	void clearDeck();
 	
 }

@@ -182,12 +182,17 @@ public class Player implements Moves {
 	{
 		return deck.displayDeck();
 	}
-	
+	/**
+	 * Flips all of the cards to a face up position
+	 */
 	public void flipAllUp()
 	{
 		deck.flipAllUp();
 	}
-	
+	/**
+	 * Flips a single card
+	 * @return the boolean value of the card (flipped or not)
+	 */
 	public boolean flip()
 	{
 		return deck.flip();
